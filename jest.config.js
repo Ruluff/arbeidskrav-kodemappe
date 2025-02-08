@@ -5,9 +5,6 @@
 
 /** @type {import('jest').Config} */
 const config = {
-  transform: {
-    "\\.[jt]sx?$": "babel-jest",
-  },
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -15,7 +12,7 @@ const config = {
   // bail: 0,
 
   // The directory where Jest should store its cached dependency information
-  // cacheDirectory: "C:\\Users\\tony-\\AppData\\Local\\Temp\\jest",
+  // cacheDirectory: "C:\\Users\\Tony\\AppData\\Local\\Temp\\jest",
 
   // Automatically clear mock calls, instances, contexts and results before every test
   // clearMocks: false,

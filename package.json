@@ -6,17 +6,25 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "jest --config ./jest.config.js"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
     "@babel/core": "^7.26.7",
     "@babel/preset-env": "^7.26.7",
     "babel-jest": "^29.7.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ruluff/arbeidskrav-kodemappe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ruluff/arbeidskrav-kodemappe/issues"
+  },
+  "homepage": "https://github.com/Ruluff/arbeidskrav-kodemappe#readme",
+  "description": ""
 }
