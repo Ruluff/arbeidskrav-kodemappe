@@ -18,24 +18,31 @@ function createCharacter() {
 
 document.getElementById("create-character").addEventListener("click", createCharacter);
 
-/*
 //Seksjon 2: Generer fiende
 
-// Character HP
-const characterHP = (min, max) => {
-  return Math.random() * (max - min) + min;
-};
+function enemyCreator() {
+  const enemies = [
+    {name: "Dragon", img: "assets/dragon.jpg", hp: 100, attack: 30},
+    {name: "Monster", img: "assets/monster.jpg", hp: 80, attack: 25},
+    {name: "Swamp Monster", img: "assets/swamp-monster.jpg", hp: 50, attack: 20},
+  ];
 
-const getCharacterHP = characterHP(50, 151);
+  const randomEnemy = enemies[Math.floor(Math.random() * enemies.length)];
 
-console.log(getCharacterHP);
+  const enemyImg = document.getElementById("enemy-img");
+  enemyImg.src = randomEnemy.img;
 
-// Character attack damage
-const attackDamage = (min, max) => {
-  return Math.random() * (max - min) + min;
-};
+  const enemyName = document.getElementById("enemy-name");
+  enemyName.innerHTML = randomEnemy.name;
 
-// Seksjon 3: Sloss!
-//Du skal vise frem helten og fienden. Se HTML-dokumentet for hvordan fremvisningen skal se ut, med tanke på hvilke tagger, hierarki og hvilke klasser de skal ha.
-//Du skal lage den strukturen som vist i HTML, her i Javascript og legge de til i div'en "battle-arena" fra HTML.
-*/
+  const enemyHp = document.getElementById("enemy-hp");
+  enemyHp.innerHTML = randomEnemy.hp;
+
+  const enemyAttack = document.getElementById("enemy-attack");
+  enemyAttack.innerHTML = randomEnemy.attack;
+
+  console.log(enemies);
+  console.log(randomEnemy);
+}
+
+document.getElementById("enemy-creator").addEventListener("click", enemyCreator);
