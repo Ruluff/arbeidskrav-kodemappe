@@ -3,14 +3,24 @@
 
 // Del 1: Lag karakter og lagre karakteren i localStorage (Legge til event listener på hvert bilde?)
 
+let selectedProfilePicture = 0; // lagt til 0 for å velge en karakter uansett
+
 function createCharacter() {
   const characterName = document.getElementById("character-name").value;
   const characterHp = parseInt(document.getElementById("character-hp").value, 10);
   const attackDamage = parseInt(document.getElementById("attack-damage").value, 10);
-  const profilePicture = document.querySelector(".profile-img");
 
-  const character = {characterName, characterHp, attackDamage, profilePicture};
+  const profilePicture = Array.from(document.getElementsByClassName("profile-img"));
 
+  profilePicture.forEach(function (image, index) {
+    image.addEventListener("click", function () {
+      selectedProfilePicture = index;
+    });
+  });
+
+  const character = {characterName, characterHp, attackDamage, profilePicture: selectedProfilePicture};
+
+  console.log(profilePicture);
   console.log(character);
 
   localStorage.setItem("character", JSON.stringify(character));
@@ -43,6 +53,10 @@ function enemyCreator() {
 
   console.log(enemies);
   console.log(randomEnemy);
+
+  localStorage.setItem("randomEnemy", JSON.stringify(randomEnemy));
 }
 
 document.getElementById("enemy-creator").addEventListener("click", enemyCreator);
+
+// Seksjon 3: Sloss!
