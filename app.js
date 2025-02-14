@@ -31,9 +31,9 @@ document.getElementById("create-character").addEventListener("click", createChar
 
 function enemyCreator() {
   const enemies = [
-    {name: "Dragon", img: "assets/dragon.jpg", hp: 100, attack: 30},
-    {name: "Orc", img: "assets/monster.jpg", hp: 80, attack: 25},
-    {name: "Swamp Monster", img: "assets/swamp-monster.jpg", hp: 50, attack: 20},
+    {name: "Dragon", img: "assets/dragon.jpg", hp: 150, attack: 50},
+    {name: "Orc", img: "assets/monster.jpg", hp: 80, attack: 20},
+    {name: "Swamp Monster", img: "assets/swamp-monster.jpg", hp: 120, attack: 40},
   ];
 
   const randomEnemy = enemies[Math.floor(Math.random() * enemies.length)];
