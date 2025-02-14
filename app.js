@@ -32,7 +32,7 @@ document.getElementById("create-character").addEventListener("click", createChar
 function enemyCreator() {
   const enemies = [
     {name: "Dragon", img: "assets/dragon.jpg", hp: 100, attack: 30},
-    {name: "Monster", img: "assets/monster.jpg", hp: 80, attack: 25},
+    {name: "Orc", img: "assets/monster.jpg", hp: 80, attack: 25},
     {name: "Swamp Monster", img: "assets/swamp-monster.jpg", hp: 50, attack: 20},
   ];
 
