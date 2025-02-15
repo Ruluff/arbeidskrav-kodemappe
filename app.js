@@ -3,12 +3,18 @@
 
 // Del 1: Lag karakter og lagre karakteren i localStorage (Legge til event listener på hvert bilde?)
 
-let selectedProfilePicture = 0; // lagt til 0 for å velge en karakter uansett
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("enemy-creator").addEventListener("click", enemyCreator);
+  document.getElementById("create-character").addEventListener("click", createCharacter);
+  document.getElementById("start-fight").addEventListener("click", startFight);
 
-const profilePicture = Array.from(document.getElementsByClassName("profile-img"));
-profilePicture.forEach(function (image, index) {
-  image.addEventListener("click", function () {
-    selectedProfilePicture = index;
+  let selectedProfilePicture = 0; // lagt til 0 for å velge en karakter uansett
+
+  const profilePicture = Array.from(document.getElementsByClassName("profile-img"));
+  profilePicture.forEach(function (image, index) {
+    image.addEventListener("click", function () {
+      selectedProfilePicture = index;
+    });
   });
 });
 
@@ -24,8 +30,6 @@ function createCharacter() {
 
   localStorage.setItem("character", JSON.stringify(character));
 }
-
-document.getElementById("create-character").addEventListener("click", createCharacter);
 
 //Seksjon 2: Genrer fiende
 
@@ -56,8 +60,6 @@ function enemyCreator() {
   localStorage.setItem("randomEnemy", JSON.stringify(randomEnemy));
 }
 
-document.getElementById("enemy-creator").addEventListener("click", enemyCreator);
-
 // Seksjon 3: Sloss
 
 // Slosskamp insp: https://github.com/ZakSchenck/pokemon-game/blob/main/app.js
@@ -74,6 +76,8 @@ function battle(charHp, charAttack, enemyHp, enemyAttack) {
     return "Du tapte!";
   }
 }
+
+module.exports = {battle};
 
 function chooseWinner() {
   const createdCharacter = JSON.parse(localStorage.getItem("character"));
@@ -94,8 +98,6 @@ function startFight() {
   chooseWinner(createdCharacter.characterHp, createdEnemy.hp);
 
   const battleArea = document.getElementById("battle-area");
-
-  chooseWinner();
 
   // Display
 
@@ -164,8 +166,6 @@ function startFight() {
 
   console.log(startFight);
 }
-
-document.getElementById("start-fight").addEventListener("click", startFight);
 
 // resultat
 
