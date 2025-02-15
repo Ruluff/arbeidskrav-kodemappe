@@ -17,3 +17,9 @@ describe("battle", () => {
     expect(battle(100, 50, 120, 50)).toBe("Du tapte!");
   });
 });
+
+describe("battle", () => {
+  test("Should return du tapte when HP and Attack is set to minus", () => {
+    expect(battle(-100, -50, 80, 60)).toBe("Du tapte!");
+  });
+});
