@@ -3,18 +3,12 @@
 
 // Del 1: Lag karakter og lagre karakteren i localStorage (Legge til event listener på hvert bilde?)
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("enemy-creator").addEventListener("click", enemyCreator);
-  document.getElementById("create-character").addEventListener("click", createCharacter);
-  document.getElementById("start-fight").addEventListener("click", startFight);
+let selectedProfilePicture = 0; // lagt til 0 for å velge en karakter uansett
 
-  let selectedProfilePicture = 0; // lagt til 0 for å velge en karakter uansett
-
-  const profilePicture = Array.from(document.getElementsByClassName("profile-img"));
-  profilePicture.forEach(function (image, index) {
-    image.addEventListener("click", function () {
-      selectedProfilePicture = index;
-    });
+const profilePicture = Array.from(document.getElementsByClassName("profile-img"));
+profilePicture.forEach(function (image, index) {
+  image.addEventListener("click", function () {
+    selectedProfilePicture = index;
   });
 });
 
@@ -23,6 +17,10 @@ function createCharacter() {
   const characterHp = parseInt(document.getElementById("character-hp").value, 10);
   const attackDamage = parseInt(document.getElementById("attack-damage").value, 10);
 
+  if (!characterName || isNaN(characterHp) || isNaN(attackDamage)) {
+    return alert("One or more fields are empty");
+  }
+
   const character = {characterName, characterHp, attackDamage, profilePicture: selectedProfilePicture};
 
   console.log(profilePicture);
@@ -30,6 +28,8 @@ function createCharacter() {
 
   localStorage.setItem("character", JSON.stringify(character));
 }
+
+document.getElementById("create-character")?.addEventListener("click", createCharacter);
 
 //Seksjon 2: Genrer fiende
 
@@ -60,10 +60,11 @@ function enemyCreator() {
   localStorage.setItem("randomEnemy", JSON.stringify(randomEnemy));
 }
 
+document.getElementById("enemy-creator")?.addEventListener("click", enemyCreator);
+
+document.getElementById("start-fight")?.addEventListener("click", startFight);
+
 // Seksjon 3: Sloss
-
-// Slosskamp insp: https://github.com/ZakSchenck/pokemon-game/blob/main/app.js
-
 function battle(charHp, charAttack, enemyHp, enemyAttack) {
   const remainingCharHp = charHp - enemyAttack;
   const remainingEnemyHp = enemyHp - charAttack;
@@ -166,7 +167,3 @@ function startFight() {
 
   console.log(startFight);
 }
-
-// resultat
-
-// function chooseWinner(subtract) {
